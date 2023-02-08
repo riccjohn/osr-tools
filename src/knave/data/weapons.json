@@ -1,0 +1,148 @@
+{
+  "weapons": [
+    {
+      "count": 1,
+      "damage": "d6",
+      "hand": 1,
+      "name": "dagger",
+      "quality": 3,
+      "slots": 1,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d6",
+      "hand": 1,
+      "name": "cudgel",
+      "quality": 3,
+      "slots": 1,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d6",
+      "hand": 1,
+      "name": "sickle",
+      "quality": 3,
+      "slots": 1,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d6",
+      "hand": 1,
+      "name": "staff",
+      "quality": 3,
+      "slots": 1,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d8",
+      "hand": 1,
+      "name": "spear",
+      "quality": 3,
+      "slots": 2,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d8",
+      "hand": 1,
+      "name": "sword",
+      "quality": 3,
+      "slots": 2,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d8",
+      "hand": 1,
+      "name": "mace",
+      "quality": 3,
+      "slots": 2,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d8",
+      "hand": 1,
+      "name": "axe",
+      "quality": 3,
+      "slots": 2,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d8",
+      "hand": 1,
+      "name": "flail",
+      "quality": 3,
+      "slots": 2,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d10",
+      "hand": 2,
+      "name": "halberd",
+      "quality": 3,
+      "slots": 3,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d10",
+      "hand": 2,
+      "name": "warhammer",
+      "quality": 3,
+      "slots": 3,
+      "type": "weapon"
+    },
+    {
+      "name": "longsword",
+      "count": 1,
+      "damage": "d10",
+      "hand": 2,
+      "quality": 3,
+      "slots": 3,
+      "type": "weapon"
+    },
+    {
+      "name": "battleaxe",
+      "count": 1,
+      "damage": "d10",
+      "hand": 2,
+      "quality": 3,
+      "slots": 3,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d4",
+      "hand": 1,
+      "name": "sling",
+      "quality": 1,
+      "slots": 1,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d6",
+      "hand": 2,
+      "name": "bow",
+      "quality": 3,
+      "slots": 2,
+      "type": "weapon"
+    },
+    {
+      "count": 1,
+      "damage": "d8",
+      "hand": 2,
+      "name": "crossbow",
+      "quality": 3,
+      "slots": 3,
+      "type": "weapon"
+    }
+  ]
+}
