@@ -1,3 +1,4 @@
+/* Provided by Nextjs by default */
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -105,3 +106,8 @@ a {
     color-scheme: dark;
   }
 }
+
+/* Custom Styles  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
