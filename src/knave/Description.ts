@@ -1,5 +1,5 @@
-import traitsData from "@/knave/data/traits.json"
-import { Randomization } from "@/dice"
+import traitsData from '@/knave/data/traits.json'
+import { Randomization } from '@/dice'
 
 class Description {
   public traits
@@ -16,7 +16,7 @@ class Description {
         acc[curr] = Randomization.getRandomItem(traitsData[curr as INoun])
         return acc
       },
-      {}
+      {},
     )
 
     return randomTraits

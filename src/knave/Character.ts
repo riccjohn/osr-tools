@@ -1,5 +1,5 @@
-import { KnaveDescription, KnaveGear } from "@/knave"
-import { Dice, Randomization } from "@/dice"
+import { KnaveDescription, KnaveGear } from '@/knave'
+import { Dice, Randomization } from '@/dice'
 
 class Character {
   public armor: IArmor
@@ -27,26 +27,26 @@ class Character {
     this.armor = {
       count: 0,
       defense: 0,
-      name: "",
+      name: '',
       quality: 0,
       slots: 0,
-      type: "armor",
+      type: 'armor',
     }
     this.copperPieces = 0
-    this.gender = "non-binary"
-    this.items = [{ name: "", count: 0, type: "food", slots: 0 }]
+    this.gender = 'non-binary'
+    this.items = [{ name: '', count: 0, type: 'food', slots: 0 }]
     this.itemSlots = 0
     this.level = 0
     this.maxHp = 0
     this.traits = this.generateTraits()
     this.weapon = {
       count: 1,
-      damage: "d6",
+      damage: 'd6',
       hand: 1,
-      name: "",
+      name: '',
       quality: 0,
       slots: 1,
-      type: "weapon",
+      type: 'weapon',
     }
   }
 
@@ -126,14 +126,14 @@ class Character {
 
   private randomGender = (): IGender => {
     const genders: IGender[] = [
-      "cis-male",
-      "cis-female",
-      "non-binary",
-      "transgender",
-      "two-spirit",
-      "genderqueer",
-      "gender-fluid",
-      "gender-neutral",
+      'cis-male',
+      'cis-female',
+      'non-binary',
+      'transgender',
+      'two-spirit',
+      'genderqueer',
+      'gender-fluid',
+      'gender-neutral',
     ]
 
     return Randomization.getRandomItem(genders)

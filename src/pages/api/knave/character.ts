@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { KnaveCharacter } from "@/knave";
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { KnaveCharacter } from '@/knave'
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
