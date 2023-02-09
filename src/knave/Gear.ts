@@ -1,7 +1,7 @@
-import armorList from "@/knave/data/armor.json"
-import gearList from "@/knave/data/gear.json"
-import weaponList from "@/knave/data/weapons.json"
-import { Randomization } from "@/dice"
+import armorList from '@/knave/data/armor.json'
+import gearList from '@/knave/data/gear.json'
+import weaponList from '@/knave/data/weapons.json'
+import { Randomization } from '@/dice'
 
 class Gear {
   public itemSlots: number
@@ -36,7 +36,7 @@ class Gear {
     const availableWeapons = (weaponList.weapons as IWeapon[]).filter(
       weapon => {
         return weapon.slots <= slotsRemaining
-      }
+      },
     )
     const weapon = Randomization.getRandomItem(availableWeapons)
     this.itemSlotsUsed += weapon.slots
@@ -49,8 +49,8 @@ class Gear {
     const gen2 = gearList.generalGearSetTwo as IGear[]
 
     const startingGear: IGear[] = [
-      { name: "rations", count: 1, slots: 1, type: "food" },
-      { name: "rations", count: 1, slots: 1, type: "food" },
+      { name: 'rations', count: 1, slots: 1, type: 'food' },
+      { name: 'rations', count: 1, slots: 1, type: 'food' },
     ]
 
     const dungeoneeringGear: IGear[] = new Array(2)

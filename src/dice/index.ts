@@ -1,2 +1,2 @@
-export { default as Dice } from "./Dice"
-export { default as Randomization } from "./Randomization"
+export { default as Dice } from './Dice'
+export { default as Randomization } from './Randomization'

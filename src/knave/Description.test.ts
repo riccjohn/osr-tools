@@ -1,10 +1,10 @@
-import Description from "./Description"
-import traitsData from "./data/traits.json"
+import Description from './Description'
+import traitsData from './data/traits.json'
 
-jest.mock("@/dice/Randomization")
+jest.mock('@/dice/Randomization')
 
-describe("Description", () => {
-  describe("traits", () => {
+describe('Description', () => {
+  describe('traits', () => {
     const nouns = Object.keys(traitsData)
 
     const description = new Description()
