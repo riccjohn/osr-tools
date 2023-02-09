@@ -15,7 +15,7 @@
     <a href="https://necroticgnome.com/">
       <img
         style="width: 200px"
-        alt="For use with Old School Essentials"
+        alt="Designed for use with Old-School Essentials"
         src="docs/images/use-with-OSE.png"
       />
     </a>
@@ -31,6 +31,13 @@
         style="width: 200px; background: transparent"
         alt="Compatible with Mork Borg"
         src="docs/images/compatible-with-Mork-Borg-vert.svg"
+      />
+    </a>
+    <a href="https://www.thearcanelibrary.com/pages/shadowdark">
+      <img
+        style="width: 325px; background: transparent"
+        alt="Designed for use with Shadowdark RPG"
+        src="docs/images/Third_Party_Shadowdark_Logo_Black.png"
       />
     </a>
   </div>
