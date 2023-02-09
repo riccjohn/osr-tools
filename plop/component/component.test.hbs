@@ -1,0 +1,10 @@
+import { render, screen } from '@testing-library/react'
+import {{properCase name}} from './{{properCase name}}'
+
+describe('{{properCase name}}', () => {
+  test('displays the component', () => {
+    render(<{{properCase name}} />)
+
+    expect(screen.getByText('Hello World')).toBeInTheDocument()
+  })
+})
