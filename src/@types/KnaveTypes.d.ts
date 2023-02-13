@@ -1,3 +1,12 @@
+interface KnaveCharacterData {
+  abilities: IAbilities
+  copperPieces: number
+  maxHp: number
+  traits: ITraits
+  items: Array<Item>
+  itemSlots: number
+}
+
 type IAbilities = Record<IAbilityName, IAbility>
 
 type IAbilityName =
@@ -22,6 +31,8 @@ type IGender =
   | 'genderqueer'
   | 'gender-fluid'
   | 'gender-neutral'
+
+type Item = IGear | IArmor | IWeapon
 
 interface IGear {
   count: number
