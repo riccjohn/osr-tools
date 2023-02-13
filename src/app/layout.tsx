@@ -12,7 +12,11 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        <div className="container mx-auto flex flex-col bg-white dark:bg-slate-900">
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
