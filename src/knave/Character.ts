@@ -46,7 +46,21 @@ class Character {
     wisdom: { bonus: 3, defense: 13 },
   }
 
-  constructor() {}
+  constructor(characterJson: Object | undefined = undefined) {
+    if (characterJson) {
+      const character = characterJson as Character
+
+      this.armor = character.armor
+      this.copperPieces = character.copperPieces
+      this.items = character.items
+      this.itemSlots = character.itemSlots
+      this.level = character.level
+      this.maxHp = character.maxHp
+      this.traits = character.traits
+      this.weapon = character.weapon
+      this.abilities = character.abilities
+    }
+  }
 
   public generate = (): void => {
     this.level = 1
