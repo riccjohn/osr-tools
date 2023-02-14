@@ -9,46 +9,66 @@ describe('KnaveCharacter', () => {
   let character: KnaveCharacter
 
   describe('initialization', () => {
-    beforeEach(() => {
-      character = new KnaveCharacter()
+    describe('given no arguments', () => {
+      beforeEach(() => {
+        character = new KnaveCharacter()
+      })
+
+      test('sets a default for all abilities', () => {
+        const defaultAbility = { bonus: 3, defense: 13 }
+
+        expect(character.charisma).toEqual(defaultAbility)
+        expect(character.constitution).toEqual(defaultAbility)
+        expect(character.dexterity).toEqual(defaultAbility)
+        expect(character.intelligence).toEqual(defaultAbility)
+        expect(character.strength).toEqual(defaultAbility)
+        expect(character.wisdom).toEqual(defaultAbility)
+      })
+
+      test('sets a default for copper pieces', () => {
+        expect(character.copperPieces).toEqual(0)
+      })
+
+      test('sets a default list of items', () => {
+        const defaultItem = { name: '', count: 0, type: 'food', slots: 0 }
+        expect(character.items).toHaveLength(1)
+        expect(character.items[0]).toEqual(defaultItem)
+      })
+
+      test('sets a default level of 1', () => {
+        expect(character.level).toBe(1)
+      })
+
+      test('sets a default max HP of 4', () => {
+        expect(character.maxHp).toBe(4)
+      })
+
+      test('sets a default number of item slots', () => {
+        expect(character.itemSlots).toEqual(13)
+      })
+
+      test('generates a list of traits', () => {
+        const traitNouns = Object.keys(character.traits)
+        expect(traitNouns.length).toBeGreaterThan(1)
+      })
     })
 
-    test('sets a default for all abilities', () => {
-      const defaultAbility = { bonus: 3, defense: 13 }
+    describe('given character data as an argument', () => {
+      beforeEach(() => {
+        character = new KnaveCharacter(knaveCharacterJson)
+      })
 
-      expect(character.charisma).toEqual(defaultAbility)
-      expect(character.constitution).toEqual(defaultAbility)
-      expect(character.dexterity).toEqual(defaultAbility)
-      expect(character.intelligence).toEqual(defaultAbility)
-      expect(character.strength).toEqual(defaultAbility)
-      expect(character.wisdom).toEqual(defaultAbility)
-    })
-
-    test('sets a default for copper pieces', () => {
-      expect(character.copperPieces).toEqual(0)
-    })
-
-    test('sets a default list of items', () => {
-      const defaultItem = { name: '', count: 0, type: 'food', slots: 0 }
-      expect(character.items).toHaveLength(1)
-      expect(character.items[0]).toEqual(defaultItem)
-    })
-
-    test('sets a default level of 1', () => {
-      expect(character.level).toBe(1)
-    })
-
-    test('sets a default max HP of 4', () => {
-      expect(character.maxHp).toBe(4)
-    })
-
-    test('sets a default number of item slots', () => {
-      expect(character.itemSlots).toEqual(13)
-    })
-
-    test('generates a list of traits', () => {
-      const traitNouns = Object.keys(character.traits)
-      expect(traitNouns.length).toBeGreaterThan(1)
+      test('uses the values from the given json to create a new character', () => {
+        expect(character.armor).toEqual(knaveCharacterJson.armor)
+        expect(character.copperPieces).toEqual(knaveCharacterJson.copperPieces)
+        expect(character.items).toEqual(knaveCharacterJson.items)
+        expect(character.itemSlots).toEqual(knaveCharacterJson.itemSlots)
+        expect(character.level).toEqual(knaveCharacterJson.level)
+        expect(character.maxHp).toEqual(knaveCharacterJson.maxHp)
+        expect(character.traits).toEqual(knaveCharacterJson.traits)
+        expect(character.weapon).toEqual(knaveCharacterJson.weapon)
+        expect(character.abilityScores).toEqual(knaveCharacterJson.abilities)
+      })
     })
   })
 
@@ -192,3 +212,72 @@ describe('KnaveCharacter', () => {
     })
   })
 })
+
+const knaveCharacterJson = {
+	"armor": {
+		"name": "helmet",
+		"count": 1,
+		"defense": 1,
+		"slots": 1,
+		"type": "armor",
+		"quality": 1
+	},
+	"copperPieces": 31,
+	"items": [
+		{ "name": "rations", "count": 1, "slots": 1, "type": "food" },
+		{ "name": "rations", "count": 1, "slots": 1, "type": "food" },
+		{ "name": "candles", "slots": 1, "type": "light", "count": 5 },
+		{ "name": "candles", "slots": 1, "type": "light", "count": 5 },
+		{ "name": "grease", "slots": 1, "type": "tool", "count": 1 },
+		{ "name": "incense", "slots": 1, "type": "tool", "count": 1 },
+		{
+			"name": "helmet",
+			"count": 1,
+			"defense": 1,
+			"slots": 1,
+			"type": "armor",
+			"quality": 1
+		},
+		{
+			"count": 1,
+			"damage": "d8",
+			"hand": 1,
+			"name": "sword",
+			"quality": 3,
+			"slots": 2,
+			"type": "weapon"
+		}
+	],
+	"itemSlots": 11,
+	"level": 1,
+	"maxHp": 8,
+	"traits": {
+		"physique": "athletic",
+		"face": "round",
+		"skin": "pockmarked",
+		"hair": "limp",
+		"clothing": "eccentric",
+		"virtue": "loyal",
+		"vice": "wasteful",
+		"speech": "formal",
+		"background": "herbalist",
+		"misfortune": "framed"
+	},
+	"weapon": {
+		"count": 1,
+		"damage": "d8",
+		"hand": 1,
+		"name": "sword",
+		"quality": 3,
+		"slots": 2,
+		"type": "weapon"
+	},
+	"abilities": {
+		"charisma": { "bonus": 1, "defense": 11 },
+		"constitution": { "bonus": 1, "defense": 11 },
+		"dexterity": { "bonus": 2, "defense": 12 },
+		"intelligence": { "bonus": 2, "defense": 12 },
+		"strength": { "bonus": 2, "defense": 12 },
+		"wisdom": { "bonus": 5, "defense": 15 }
+	}
+}
