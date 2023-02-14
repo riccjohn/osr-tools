@@ -34,24 +34,21 @@ describe('KnaveCharacter', () => {
       expect(character.items[0]).toEqual(defaultItem)
     })
 
-    test('sets a default level of 0', () => {
-      expect(character.level).toBe(0)
+    test('sets a default level of 1', () => {
+      expect(character.level).toBe(1)
     })
 
-    test('sets a default max HP of 0', () => {
-      expect(character.maxHp).toBe(0)
-    })
-
-    test('sets a default gender', () => {
-      expect(character.gender).toEqual('non-binary')
+    test('sets a default max HP of 4', () => {
+      expect(character.maxHp).toBe(4)
     })
 
     test('sets a default number of item slots', () => {
-      expect(character.itemSlots).toEqual(0)
+      expect(character.itemSlots).toEqual(13)
     })
 
     test('generates a list of traits', () => {
-      expect(character.traits).toBeTruthy()
+      const traitNouns = Object.keys(character.traits)
+      expect(traitNouns.length).toBeGreaterThan(1)
     })
   })
 
@@ -175,20 +172,6 @@ describe('KnaveCharacter', () => {
     test('has a randomly generated starting copper pieces', () => {
       expect(generatedCharacter.copperPieces).toBeGreaterThanOrEqual(23)
       expect(generatedCharacter.copperPieces).toBeLessThanOrEqual(38)
-    })
-
-    test('randomly assigns a gender', () => {
-      const genders = [
-        'cis-male',
-        'cis-female',
-        'non-binary',
-        'transgender',
-        'two-spirit',
-        'genderqueer',
-        'gender-fluid',
-        'gender-neutral',
-      ]
-      expect(genders).toContain(generatedCharacter.gender)
     })
 
     test('has a maxHP stat between 1 and 8', () => {

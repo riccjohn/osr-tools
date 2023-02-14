@@ -1,65 +1,63 @@
 import { KnaveDescription, KnaveGear } from '@/knave'
-import { Dice, Randomization } from '@/dice'
+import { Dice } from '@/dice'
 
 class Character {
-  public armor: IArmor
-  public copperPieces: number
-  public gender: IGender
-  public items: IGear[]
-  public itemSlots: number
-  public level: number
-  public maxHp: number
-  public traits: ITraits
-  public weapon: IWeapon
-
-  private abilities: IAbilities
-
-  constructor() {
-    this.abilities = {
-      charisma: { bonus: 3, defense: 13 },
-      constitution: { bonus: 3, defense: 13 },
-      dexterity: { bonus: 3, defense: 13 },
-      intelligence: { bonus: 3, defense: 13 },
-      strength: { bonus: 3, defense: 13 },
-      wisdom: { bonus: 3, defense: 13 },
-    }
-
-    this.armor = {
-      count: 0,
-      defense: 0,
-      name: '',
-      quality: 0,
-      slots: 0,
-      type: 'armor',
-    }
-    this.copperPieces = 0
-    this.gender = 'non-binary'
-    this.items = [{ name: '', count: 0, type: 'food', slots: 0 }]
-    this.itemSlots = 0
-    this.level = 0
-    this.maxHp = 0
-    this.traits = this.generateTraits()
-    this.weapon = {
-      count: 1,
-      damage: 'd6',
-      hand: 1,
-      name: '',
-      quality: 0,
-      slots: 1,
-      type: 'weapon',
-    }
+  public armor: IArmor = {
+    count: 0,
+    defense: 0,
+    name: '',
+    quality: 0,
+    slots: 0,
+    type: 'armor',
   }
+  public copperPieces: number = 0
+  public items: IGear[] = [{ name: '', count: 0, type: 'food', slots: 0 }]
+  public itemSlots: number = 13
+  public level: number = 1
+  public maxHp: number = 4
+  public traits: ITraits = {
+    physique: '',
+    face: '',
+    skin: '',
+    hair: '',
+    clothing: '',
+    virtue: '',
+    vice: '',
+    speech: '',
+    background: '',
+    misfortune: '',
+  }
+  public weapon: IWeapon = {
+    count: 1,
+    damage: 'd6',
+    hand: 1,
+    name: '',
+    quality: 0,
+    slots: 1,
+    type: 'weapon',
+  }
+
+  private abilities: IAbilities = {
+    charisma: { bonus: 3, defense: 13 },
+    constitution: { bonus: 3, defense: 13 },
+    dexterity: { bonus: 3, defense: 13 },
+    intelligence: { bonus: 3, defense: 13 },
+    strength: { bonus: 3, defense: 13 },
+    wisdom: { bonus: 3, defense: 13 },
+  }
+
+  constructor() {}
 
   public generate = (): void => {
     this.level = 1
     this.abilities = this.generateAbilities()
     this.copperPieces = this.rollForCopperPieces()
-    this.gender = this.randomGender()
     this.itemSlots = this.constitution.defense
     this.maxHp = this.rollHitPoints()
 
     const gear = new KnaveGear(this.itemSlots)
 
+    this.traits = this.generateTraits()
     this.items = gear.items
     this.armor = gear.armor
     this.weapon = gear.weapon
@@ -122,21 +120,6 @@ class Character {
   private rollAbilityScore = (): number => {
     const rolls = new Array(3).fill(undefined).map(() => Dice.roll(6))
     return Math.min(...rolls)
-  }
-
-  private randomGender = (): IGender => {
-    const genders: IGender[] = [
-      'cis-male',
-      'cis-female',
-      'non-binary',
-      'transgender',
-      'two-spirit',
-      'genderqueer',
-      'gender-fluid',
-      'gender-neutral',
-    ]
-
-    return Randomization.getRandomItem(genders)
   }
 
   private generateTraits = (): ITraits => {

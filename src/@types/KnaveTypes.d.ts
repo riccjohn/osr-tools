@@ -22,16 +22,6 @@ interface IAbility {
   defense: number
 }
 
-type IGender =
-  | 'cis-male'
-  | 'cis-female'
-  | 'non-binary'
-  | 'transgender'
-  | 'two-spirit'
-  | 'genderqueer'
-  | 'gender-fluid'
-  | 'gender-neutral'
-
 type Item = IGear | IArmor | IWeapon
 
 interface IGear {
