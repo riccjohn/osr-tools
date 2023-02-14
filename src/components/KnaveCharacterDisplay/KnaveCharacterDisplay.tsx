@@ -15,14 +15,10 @@ const KnaveCharacterDisplay: React.FC<IKnaveCharacterProps> = ({
       {character && (
         <div className='container mx-auto flex flex-col px-1 text-black dark:text-white'>
           <section className='flex flex-col py-2'>
-            <p className=''>
-              <span className='font-bold'>Name: </span>
-              <span className='text-base'>FooBar Baz</span>
-            </p>
             <div className='flex'>
               <p className='mr-1'>
                 <span className='font-bold'>HP: </span>
-                <span className='text-base'>{`${maxHp}`}</span>
+                <span className='text-base'>{maxHp}</span>
               </p>
               <p className='mr-1'>
                 <span className='font-bold'>Copper: </span>
@@ -119,7 +115,7 @@ interface IAbilityRowProps {
 
 const AbilityRow: React.FC<IAbilityRowProps> = ({ bonus, defense, label }) => {
   return (
-    <tr role='row' className=''>
+    <tr role='row' data-testid={`${label.toLowerCase()}-row`}>
       <td role='cell'>{defense}</td>
       <th role='cell'>{label}</th>
       <td role='cell'>{bonus}</td>
@@ -129,14 +125,13 @@ const AbilityRow: React.FC<IAbilityRowProps> = ({ bonus, defense, label }) => {
 
 const Items: React.FC<IKnaveCharacterProps> = ({ character }) => {
   const { items, itemSlots } = character
-  const maxItemSlots = itemSlots
   const itemSlotsUsed = items.reduce((acc, curr) => acc + curr.slots, 0)
 
   return (
     <section className='flex flex-col py-2'>
       <h2 className='text-center text-lg font-bold'>Weapons & Gear</h2>
       <p data-testid='item-slots-used'>
-        {`Item Slots Used: ${itemSlotsUsed}/${maxItemSlots}`}
+        {`Item Slots Used: ${itemSlotsUsed}/${itemSlots}`}
       </p>
       <table>
         <thead>
@@ -156,7 +151,7 @@ const Items: React.FC<IKnaveCharacterProps> = ({ character }) => {
           </tr>
         </thead>
         <tbody>
-          {items.map((item: any, idx) => (
+          {items.map((item, idx) => (
             <ItemRow item={item} key={`${item.name}-${idx}`} />
           ))}
         </tbody>
@@ -166,22 +161,19 @@ const Items: React.FC<IKnaveCharacterProps> = ({ character }) => {
 }
 
 interface IItemRowProps {
-  item: {
-    count: number
-    name: string
-    defense?: number
-    damage?: number
-    slots: number
-  }
+  item: Item
 }
 
-const ItemRow: React.FC<IItemRowProps> = ({ item }) => (
-  <tr role='row'>
-    <td role='cell'>{item.name}</td>
-    <td role='cell'>{item.defense ? item.defense : '-'}</td>
-    <td role='cell'>{item.damage ? item.damage : '-'}</td>
-    <td role='cell'>{item.slots}</td>
-  </tr>
-)
+const ItemRow: React.FC<IItemRowProps> = ({ item }) => {
+  const hyphenatedItemName = item.name.split(' ').join('-')
+  return (
+    <tr role='row' data-testid={`${hyphenatedItemName}-row`}>
+      <td role='cell' data-testid='item-name'>{item.name}</td>
+      <td role='cell' data-testid='item-defense'>{item.defense ? item.defense : '-'}</td>
+      <td role='cell' data-testid='item-damage'>{item.damage ? item.damage : '-'}</td>
+      <td role='cell' data-testid='item-slots'>{item.slots}</td>
+    </tr>
+  )
+}
 
 export default KnaveCharacterDisplay
