@@ -2,13 +2,13 @@ import React from 'react'
 import { KnaveCharacter } from '@/knave'
 
 interface IKnaveCharacterProps {
-  character: KnaveCharacterData
+  character: KnaveCharacter
 }
 
 const KnaveCharacterDisplay: React.FC<IKnaveCharacterProps> = ({
   character,
 }) => {
-  const { abilities, copperPieces, maxHp, traits } = character
+  const { abilityScores: abilities, copperPieces, maxHp, traits } = character
 
   return (
     <div className='container mx-auto'>
