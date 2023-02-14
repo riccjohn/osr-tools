@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof KnaveCharacterDisplay> = args => {
   const character = new KnaveCharacter()
   character.generate()
 
-  return <KnaveCharacterDisplay character={character as unknown as KnaveCharacterData} />
+  return <KnaveCharacterDisplay character={character} />
 }
 
 export const Primary = Template.bind({})
