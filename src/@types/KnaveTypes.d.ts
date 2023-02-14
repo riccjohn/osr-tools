@@ -13,7 +13,16 @@ interface IAbility {
   defense: number
 }
 
-type Item = IGear | IArmor | IWeapon
+type Item = {
+  count: number
+  name: string
+  defense?: number
+  damage?: string 
+  hand?: number
+  slots: number
+  type: IGearType
+  quality?: number
+}
 
 interface IGear {
   count: number
