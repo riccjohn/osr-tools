@@ -1,12 +1,3 @@
-interface KnaveCharacterData {
-  abilities: IAbilities
-  copperPieces: number
-  maxHp: number
-  traits: ITraits
-  items: Array<Item>
-  itemSlots: number
-}
-
 type IAbilities = Record<IAbilityName, IAbility>
 
 type IAbilityName =

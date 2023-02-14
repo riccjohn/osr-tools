@@ -17,7 +17,8 @@ const generateCharacter = async (): Promise<KnaveCharacter> => {
   if (response.ok) {
     const character = data
     if (character) {
-      return character
+      const knaveCharacter = new KnaveCharacter(character)
+      return knaveCharacter
     } else {
       return Promise.reject(new Error('Error generating character'))
     }
