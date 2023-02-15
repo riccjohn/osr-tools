@@ -33,7 +33,7 @@ describe('KnaveCharacterDislpay', () => {
 
     individualTraits.forEach(trait => {
       const key = Object.keys(trait)[0]
-      expect(getByTextContent(`${key}: ${trait[key]}`))
+      expect(getByTextContent(`${key}: ${trait[key]}`)).toBeVisible()
     })
   })
 
@@ -100,7 +100,7 @@ describe('KnaveCharacterDislpay', () => {
 
       const slotsUsed = character.items.reduce((acc, curr) => acc + curr.slots, 0)
 
-      expect(screen.getByText(`Item Slots Used: ${slotsUsed}/${character.itemSlots}`))
+      expect(getByTextContent(`Item Slots Used: ${slotsUsed}/${character.itemSlots}`)).toBeVisible()
     })
 
     test('displays a row for each item', () => {
