@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div>
-        <h1 className='text-3xl'>OSR Tools</h1>
+        <h1 className='text-3xl font-sebaldusGotisch'>OSR Tools</h1>
         <p>Pages</p>
         <ul>
           <li>

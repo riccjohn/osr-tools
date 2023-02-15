@@ -1,3 +1,5 @@
+const { fontFamiliy } = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,7 +10,11 @@ module.exports = {
   ],
   darkMode: ['class', '[data-mode="dark"]'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sebaldusGotisch: ['var(--font-sebaldusGotisch)'],
+      },
+    },
   },
   plugins: [],
 }
