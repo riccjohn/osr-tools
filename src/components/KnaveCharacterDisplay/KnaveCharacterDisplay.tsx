@@ -13,8 +13,10 @@ const KnaveCharacterDisplay: React.FC<IKnaveCharacterProps> = ({
   return (
     <div className='container mx-auto my-5'>
       <div className='container mx-auto flex flex-col items-center px-1 text-black dark:text-white'>
-        <h1 className='font-sebaldusGotisch text-5xl text-[#FFE747] bg-black px-1.5 mb-10'>Knave</h1>
-        <section className='flex flex-col items-center py-2'>
+        <h1 className='mb-10 bg-black px-1.5 pt-1 pb-0.5 font-sebaldusGotisch text-5xl text-[#FFE747]'>
+          Knave
+        </h1>
+        <section className='flex flex-col items-center py-2 mb-10'>
           <div className='flex items-center'>
             <p className='mr-4'>
               <span className='font-sebaldusGotisch text-xl'>HP: </span>
@@ -42,7 +44,7 @@ const Traits: React.FC<{ traits: ITraits }> = ({ traits }) => {
 
   return (
     <Section sectionTitle='Traits'>
-      <div className='flex w-1/2 items-center justify-between'>
+      <div className='flex w-full justify-between'>
         <div className='w-fit'>
           {traitsColumnOne.map(traitName => (
             <Trait
@@ -81,18 +83,18 @@ const AbilityScores: React.FC<{ abilityScores: IAbilities }> = ({
 }) => {
   return (
     <Section sectionTitle='Abilities'>
-      <div className='w-1/2'>
+      <div className='w-full'>
         <table className='w-full border-collapse'>
           <thead>
-            <tr role='row' className='font-sebaldusGotisch text-xl'>
+            <tr role='row' className='font-sebaldusGotisch text-2xl'>
               <th role='cell' className='flex justify-center'>
-                <p className='w-fit bg-black px-1 font-sebaldusGotisch text-xl text-[#FFE747]'>
+                <p className='w-fit bg-black px-1 font-sebaldusGotisch text-[#FFE747]'>
                   Defense
                 </p>
               </th>
               <th role='cell' />
               <th role='cell' className='flex justify-center'>
-                <p className='w-fit bg-black px-1 font-sebaldusGotisch text-xl text-[#FFE747]'>
+                <p className='w-fit bg-black px-1 font-sebaldusGotisch text-[#FFE747]'>
                   Bonus
                 </p>
               </th>
@@ -147,13 +149,13 @@ const AbilityRow: React.FC<IAbilityRowProps> = ({ bonus, defense, label }) => {
     <tr
       role='row'
       data-testid={`${label.toLowerCase()}-row`}
-      className='w-fit text-center'
+      className='text-center'
     >
-      <td role='cell'>{defense}</td>
+      <td role='cell' className='w-[1%]'>{defense}</td>
       <th role='cell' className='font-sebaldusGotisch text-2xl'>
         {label}
       </th>
-      <td role='cell'>{bonus}</td>
+      <td role='cell' className='w-[1%]'>{bonus}</td>
     </tr>
   )
 }
@@ -164,6 +166,7 @@ const Items: React.FC<IKnaveCharacterProps> = ({ character }) => {
 
   return (
     <Section sectionTitle='Weapons & Gear'>
+      <div className='w-full items-center flex flex-col'>
       <p
         data-testid='item-slots-used'
         className='mb-4 flex items-center font-sebaldusGotisch text-2xl'
@@ -171,7 +174,6 @@ const Items: React.FC<IKnaveCharacterProps> = ({ character }) => {
         {`Item Slots Used: `}
         <span className='pl-2 font-sans text-base'>{`${itemSlotsUsed}/${itemSlots}`}</span>
       </p>
-      <div className='w-1/2'>
         <table className='w-full'>
           <thead>
             <tr role='row' className='text-center'>
@@ -228,16 +230,16 @@ const ItemRow: React.FC<IItemRowProps> = ({ item }) => {
       data-testid={`${hyphenatedItemName}-row`}
       className='text-center'
     >
-      <td role='cell' data-testid='item-name'>
+      <td role='cell' data-testid='item-name' className='w-[1%]'>
         {item.name}
       </td>
-      <td role='cell' data-testid='item-defense'>
+      <td role='cell' data-testid='item-defense' className='w-[1%]'>
         {item.defense ? item.defense : '-'}
       </td>
-      <td role='cell' data-testid='item-damage'>
+      <td role='cell' data-testid='item-damage' className='w-[1%]'>
         {item.damage ? item.damage : '-'}
       </td>
-      <td role='cell' data-testid='item-slots'>
+      <td role='cell' data-testid='item-slots' className='w-[1%]'>
         {item.slots}
       </td>
     </tr>
@@ -248,7 +250,7 @@ const Section: React.FC<{
   sectionTitle: string
   children: React.ReactNode
 }> = ({ sectionTitle, children }) => (
-  <section className='mb-16 flex w-full flex-col items-center py-2'>
+  <section className='mb-16 flex flex-col items-center py-2 w-1/2 max-w-lg'>
     <h2 className='mb-10 bg-black px-1.5 pt-0.5 font-sebaldusGotisch text-3xl text-[#FFE747]'>
       {sectionTitle}
     </h2>
