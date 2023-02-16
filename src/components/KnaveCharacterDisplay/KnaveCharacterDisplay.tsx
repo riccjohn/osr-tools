@@ -16,7 +16,7 @@ const KnaveCharacterDisplay: React.FC<IKnaveCharacterProps> = ({
         <h1 className='mb-10 bg-black px-1.5 pt-1 pb-0.5 font-sebaldusGotisch text-5xl text-[#FFE747] dark:bg-white dark:text-[#F142AF]'>
           Knave
         </h1>
-        <section className='flex flex-col items-center py-2 mb-10'>
+        <section className='mb-10 flex flex-col items-center py-2'>
           <div className='flex items-center'>
             <p className='mr-4'>
               <span className='font-sebaldusGotisch text-xl'>HP: </span>
@@ -44,24 +44,26 @@ const Traits: React.FC<{ traits: ITraits }> = ({ traits }) => {
 
   return (
     <Section sectionTitle='Traits'>
-      <div className='flex w-full justify-between max-sm:flex-col max-sm:items-center'>
-        <div className='w-fit'>
-          {traitsColumnOne.map(traitName => (
-            <Trait
-              key={traitName}
-              name={traitName}
-              description={traits[traitName as INoun]}
-            />
-          ))}
-        </div>
-        <div className='w-fit'>
-          {traitsColumnTwo.map(traitName => (
-            <Trait
-              key={traitName}
-              name={traitName}
-              description={traits[traitName as INoun]}
-            />
-          ))}
+      <div className='flex w-full justify-center'>
+        <div className='flex w-full justify-between max-sm:w-fit max-sm:flex-col max-sm:items-center'>
+          <div className='w-fit max-sm:w-full'>
+            {traitsColumnOne.map(traitName => (
+              <Trait
+                key={traitName}
+                name={traitName}
+                description={traits[traitName as INoun]}
+              />
+            ))}
+          </div>
+          <div className='w-fit max-sm:w-full'>
+            {traitsColumnTwo.map(traitName => (
+              <Trait
+                key={traitName}
+                name={traitName}
+                description={traits[traitName as INoun]}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </Section>
@@ -151,11 +153,15 @@ const AbilityRow: React.FC<IAbilityRowProps> = ({ bonus, defense, label }) => {
       data-testid={`${label.toLowerCase()}-row`}
       className='text-center'
     >
-      <td role='cell' className='w-[1%]'>{defense}</td>
+      <td role='cell' className='w-[1%]'>
+        {defense}
+      </td>
       <th role='cell' className='font-sebaldusGotisch text-2xl'>
         {label}
       </th>
-      <td role='cell' className='w-[1%]'>{bonus}</td>
+      <td role='cell' className='w-[1%]'>
+        {bonus}
+      </td>
     </tr>
   )
 }
@@ -166,14 +172,14 @@ const Items: React.FC<IKnaveCharacterProps> = ({ character }) => {
 
   return (
     <Section sectionTitle='Weapons & Gear'>
-      <div className='w-full items-center flex flex-col'>
-      <p
-        data-testid='item-slots-used'
-        className='mb-4 flex items-center font-sebaldusGotisch text-2xl'
-      >
-        {`Item Slots Used: `}
-        <span className='pl-2 font-sans text-base'>{`${itemSlotsUsed}/${itemSlots}`}</span>
-      </p>
+      <div className='flex w-full flex-col items-center'>
+        <p
+          data-testid='item-slots-used'
+          className='mb-4 flex items-center font-sebaldusGotisch text-2xl'
+        >
+          {`Item Slots Used: `}
+          <span className='pl-2 font-sans text-base'>{`${itemSlotsUsed}/${itemSlots}`}</span>
+        </p>
         <table className='w-full'>
           <thead>
             <tr role='row' className='text-center'>
@@ -250,7 +256,7 @@ const Section: React.FC<{
   sectionTitle: string
   children: React.ReactNode
 }> = ({ sectionTitle, children }) => (
-  <section className='mb-16 flex flex-col items-center py-2  w-full max-w-xl'>
+  <section className='mb-16 flex w-full max-w-xl flex-col  items-center py-2'>
     <h2 className='mb-10 bg-black px-1.5 pt-0.5 font-sebaldusGotisch text-3xl text-[#FFE747] dark:bg-white dark:text-[#F142AF]'>
       {sectionTitle}
     </h2>
