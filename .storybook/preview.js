@@ -1,4 +1,7 @@
 import '../src/app/globals.css'
+import { withTailwindTheme } from './withTailwindTheme.decorator';
+
+export const decorators = [withTailwindTheme];
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
