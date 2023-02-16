@@ -11,9 +11,9 @@ const KnaveCharacterDisplay: React.FC<IKnaveCharacterProps> = ({
   const { abilityScores: abilities, copperPieces, maxHp, traits } = character
 
   return (
-    <div className='container mx-auto my-5'>
-      <div className='container mx-auto flex flex-col items-center px-1 text-black dark:text-white'>
-        <h1 className='mb-10 bg-black px-1.5 pt-1 pb-0.5 font-sebaldusGotisch text-5xl text-[#FFE747]'>
+    <div className='container mx-auto my-5 dark:bg-black'>
+      <div className='flex flex-col items-center px-1 text-black dark:text-[#F142AF]'>
+        <h1 className='mb-10 bg-black px-1.5 pt-1 pb-0.5 font-sebaldusGotisch text-5xl text-[#FFE747] dark:bg-white dark:text-[#F142AF]'>
           Knave
         </h1>
         <section className='flex flex-col items-center py-2 mb-10'>
@@ -44,7 +44,7 @@ const Traits: React.FC<{ traits: ITraits }> = ({ traits }) => {
 
   return (
     <Section sectionTitle='Traits'>
-      <div className='flex w-full justify-between'>
+      <div className='flex w-full justify-between max-sm:flex-col max-sm:items-center'>
         <div className='w-fit'>
           {traitsColumnOne.map(traitName => (
             <Trait
@@ -88,13 +88,13 @@ const AbilityScores: React.FC<{ abilityScores: IAbilities }> = ({
           <thead>
             <tr role='row' className='font-sebaldusGotisch text-2xl'>
               <th role='cell' className='flex justify-center'>
-                <p className='w-fit bg-black px-1 font-sebaldusGotisch text-[#FFE747]'>
+                <p className='w-fit bg-black px-1 font-sebaldusGotisch text-[#FFE747] dark:bg-white dark:text-[#F142AF]'>
                   Defense
                 </p>
               </th>
               <th role='cell' />
               <th role='cell' className='flex justify-center'>
-                <p className='w-fit bg-black px-1 font-sebaldusGotisch text-[#FFE747]'>
+                <p className='w-fit bg-black px-1 font-sebaldusGotisch text-[#FFE747] dark:bg-white dark:text-[#F142AF]'>
                   Bonus
                 </p>
               </th>
@@ -250,8 +250,8 @@ const Section: React.FC<{
   sectionTitle: string
   children: React.ReactNode
 }> = ({ sectionTitle, children }) => (
-  <section className='mb-16 flex flex-col items-center py-2 w-1/2 max-w-lg'>
-    <h2 className='mb-10 bg-black px-1.5 pt-0.5 font-sebaldusGotisch text-3xl text-[#FFE747]'>
+  <section className='mb-16 flex flex-col items-center py-2  w-full max-w-xl'>
+    <h2 className='mb-10 bg-black px-1.5 pt-0.5 font-sebaldusGotisch text-3xl text-[#FFE747] dark:bg-white dark:text-[#F142AF]'>
       {sectionTitle}
     </h2>
     {children}
