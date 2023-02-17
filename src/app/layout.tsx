@@ -22,9 +22,9 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body className='bg-white dark:bg-slate-900 min-h-screen'>
         <NavBar pages={pages} />
-        <div className='container mx-auto flex flex-col bg-white dark:bg-slate-900'>
+        <div className='container mx-auto flex flex-col min-h-screen'>
           {children}
         </div>
       </body>

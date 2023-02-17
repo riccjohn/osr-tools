@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { KnaveCharacterDisplay } from '@/components'
+import { KnaveCharacterDisplay, Spinner } from '@/components'
 import { KnaveCharacter } from '@/knave'
 import useAsync, { asyncStatus } from '@/hooks/useAsync/useAsync'
 
@@ -37,7 +37,11 @@ const Page = () => {
 
   switch (status) {
     case asyncStatus.pending:
-      return <p>Loading ...</p>
+      return (
+        <div className='flex min-h-screen items-center self-center'>
+          <Spinner />
+        </div>
+      )
     case asyncStatus.rejected:
       console.error(error)
       return <p>Error generating new character. Refresh to try again.</p>

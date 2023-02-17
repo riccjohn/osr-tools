@@ -50,7 +50,7 @@
 ## Features
 
 - [ ] Character Generators
-  - [ ] [Knave](https://www.drivethrurpg.com/product/250888/Knave)
+  - [x] [Knave](https://www.drivethrurpg.com/product/250888/Knave)
   - [ ] [Cairn](https://cairnrpg.com/)
   - [ ] [Old School Essentials](https://necroticgnome.com/) (B/X D&D)
   - [ ] [Shadowdark RPG](https://www.thearcanelibrary.com/pages/shadowdark)
