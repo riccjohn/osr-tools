@@ -7,7 +7,14 @@ export default {
   title: 'Components/NavBar',
 } as ComponentMeta<typeof NavBar>
 
-const Template: ComponentStory<typeof NavBar> = args => <NavBar />
+const pages = [
+  { name: 'Dashboard', href: '#' },
+  { name: 'Team', href: '#' },
+  { name: 'Projects', href: '#' },
+  { name: 'Calendar', href: '#' },
+]
+
+const Template: ComponentStory<typeof NavBar> = args => <NavBar pages={pages} />
 
 export const Primary = Template.bind({})
 
