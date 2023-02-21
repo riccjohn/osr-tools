@@ -23,6 +23,7 @@ const customJestConfig = {
     '@/(.*)$': '<rootDir>/src/$1',
   },
   collectCoverage: true,
+  coveragePathIgnorePatterns: ["index.ts"],
   testEnvironment: 'jest-environment-jsdom',
 }
 
