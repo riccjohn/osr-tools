@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Common",
+    "rarity": "common"
+  },
+  {
+    "name": "Dwarvish",
+    "rarity": "common"
+  },
+  {
+    "name": "Elvish",
+    "rarity": "common"
+  },
+  {
+    "name": "Giant",
+    "rarity": "common"
+  },
+  {
+    "name": "Goblin",
+    "rarity": "common"
+  },
+  {
+    "name": "Merran",
+    "rarity": "common"
+  },
+  {
+    "name": "Orcish",
+    "rarity": "common"
+  },
+  {
+    "name": "Reptilian",
+    "rarity": "common"
+  },
+  {
+    "name": "Sylvan",
+    "rarity": "common"
+  },
+  {
+    "name": "Thanian",
+    "rarity": "common"
+  },
+  {
+    "name": "Celestial",
+    "rarity": "rare"
+  },
+  {
+    "name": "Diabolic",
+    "rarity": "rare"
+  },
+  {
+    "name": "Draconic",
+    "rarity": "rare"
+  },
+  {
+    "name": "Primordial",
+    "rarity": "rare"
+  }
+]
