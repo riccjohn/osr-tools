@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Dwarf",
+    "description": "Brave, stalwart folk as sturdy as the stone kingdoms they carve inside mountains. You know the Common and Dwarvish languages",
+    "languages": ["common", "dwarvish"],
+    "languageCount": 2,
+    "talents": [
+      {
+        "name": "stout",
+        "description": "Roll your hit dice gains with advantage."
+      }
+    ]
+  },
+  {
+    "name": "Goblin",
+    "description": "Green, clever beings who thrive in dark, cramped places. As fierce as they are tiny. You know the Common and Goblin languages.",
+    "languages": ["common", "goblin"],
+    "languageCount": 2,
+    "talents": [
+      {
+        "name": "keen senses",
+        "description": "You can't be surprised"
+      }
+    ]
+  },
+  {
+    "name": "Elf",
+    "description": "Ethereal, graceful people who revere knowledge and beauty. Elves see far and live long.",
+    "languages": ["common", "elvish", "sylvan"],
+    "languageCount": 3,
+    "talents": [
+      {
+        "name": "farsight",
+        "description": "You get a +1 bonus to attack rolls with ranged weapons or a +1 bonus to spellcasting checks."
+      }
+    ]
+  },
+  {
+    "name": "Halfling",
+    "description": "Small, cheerful country folk with mischievous streaks. They enjoy life’s simple pleasures.",
+    "languages": ["common"],
+    "languageCount": 1,
+    "talents": [
+      {
+        "name": "stealthy",
+        "description": "Once per day, you can become invisible for 3 rounds."
+      }
+    ]
+  },
+  {
+    "name": "Half-Orc",
+    "description": "Towering, tusked warriors who are as daring as humans and as relentless as orcs.",
+    "languages": ["common", "orcish"],
+    "languageCount": 2,
+    "talents": [
+      {
+        "name": "mighty",
+        "description": "You have a +1 bonus to attack and damage rolls with melee weapons."
+      }
+    ]
+  },
+  {
+    "name": "Human",
+    "description": "Bold, adaptable, and diverse people who learn quickly and accomplish mighty deeds.",
+    "languages": ["common"],
+    "languageCount": 2,
+    "talents": [
+      {
+        "name": "ambitious",
+        "description": "You gain one additional talent roll at 1st level.",
+        "effect": {
+          "talentCount": 2
+        }
+      }
+    ]
+  }
+]

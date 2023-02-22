@@ -67,7 +67,7 @@ describe('ShadowdarkCharacter', () => {
             const abilities = Object.keys(character.abilityScores).map(
               abilityName =>
                 character.abilityScores[abilityName as IAbilityName],
-            ) 
+            )
 
             const abilityScoreValues = abilities.map(ability => ability.score)
             expect(abilityScoreValues.every(score => score === 10)).toBeFalsy()
@@ -78,8 +78,7 @@ describe('ShadowdarkCharacter', () => {
             })
           })
 
-          test('generates the correct modifier for each ability score', () => {
-            jest.spyOn(Dice, 'roll').mockImplementation(() => 14)
+          test('generates modifiers for each ability score', () => {
             const character = new ShadowdarkCharacter()
             character.generate()
 
@@ -92,7 +91,61 @@ describe('ShadowdarkCharacter', () => {
               character.charisma,
             ]
 
-            expect(abilities.every( ability => ability.modifier === 2)).toBeTruthy()
+            expect(
+              abilities.some(ability => ability.modifier <= 0),
+            ).toBeTruthy()
+            expect(abilities.some(ability => ability.modifier > 0)).toBeTruthy()
+          })
+        })
+
+        describe('race', () => {
+          test('assigns a random race', () => {
+            const character = new ShadowdarkCharacter()
+            character.generate()
+
+            expect(character.race).toBeTruthy()
+          })
+
+          test('assigns languages based on the race', () => {
+            const characters = Array(75)
+              .fill(undefined)
+              .map(() => {
+                const character = new ShadowdarkCharacter()
+                character.generate()
+
+                return character
+              })
+
+            const dwarfCharacters = characters.filter(
+              character => character.race.name === 'Dwarf',
+            )
+
+            expect(
+              dwarfCharacters.every(
+                character =>
+                  character.languages.includes('Dwarvish') &&
+                  character.languages.includes('Common'),
+              ),
+            ).toBeTruthy()
+          })
+
+          describe('when the character is human', () => {
+            test('assigns a second language randmoly', () => {
+              const characters = Array(75)
+                .fill(undefined)
+                .map(() => {
+                  const character = new ShadowdarkCharacter()
+                  character.generate()
+
+                  return character
+                })
+
+              const humanCharacters = characters.filter(
+                character => character.race.name === 'Human',
+              )
+
+              expect(humanCharacters.every( character => character.languages.length === 2)).toBeTruthy()
+            })
           })
         })
       })

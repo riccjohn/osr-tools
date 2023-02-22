@@ -1,7 +1,6 @@
 import { Dice } from '@/dice'
 import { expandObjectKeys } from '@/helpers'
-import { abilityModifiers } from './data'
-
+import { abilityModifiers, languages as allLanguages, races } from './data'
 class ShadowdarkCharacter {
   private abilities: IShadowdarkAbilities = {
     strength: { score: 10, modifier: 0 },
@@ -12,10 +11,13 @@ class ShadowdarkCharacter {
     charisma: { score: 10, modifier: 0 },
   }
 
+  public race: IShadowdarkRace = {} as IShadowdarkRace
+  public languages: string[] = []
   constructor() {}
 
   public generate = () => {
     this.abilities = this.generateAbilityScores()
+    this.generateRace()
   }
 
   public get abilityScores() {
@@ -46,12 +48,12 @@ class ShadowdarkCharacter {
     return this.abilities.wisdom
   }
 
-  private generateAbilityScores = () => {
+  private generateAbilityScores = (): IShadowdarkAbilities => {
     const abilityScoreRolls = this.rollAbilityScores()
 
     const abilityModifiersMap = expandObjectKeys(abilityModifiers)
 
-    const abilitiesWithModifiers = abilityScoreRolls.map( abilityScore => {
+    const abilitiesWithModifiers = abilityScoreRolls.map(abilityScore => {
       const modifier = abilityModifiersMap[abilityScore.toString()]
 
       return {
@@ -60,15 +62,8 @@ class ShadowdarkCharacter {
       }
     })
 
-    const [
-      strength,
-      dexterity,
-      constitution,
-      intelligence,
-      wisdom,
-      charisma,
-    ] = abilitiesWithModifiers;
-
+    const [strength, dexterity, constitution, intelligence, wisdom, charisma] =
+      abilitiesWithModifiers
 
     return {
       strength,
@@ -80,18 +75,48 @@ class ShadowdarkCharacter {
     }
   }
 
+  private generateRace = (): void => {
+    const dieRoll = Dice.roll(races.length - 1, 1)
+    const listOfRaces = races as IShadowdarkRace[]
+    const race = listOfRaces[dieRoll]
+    const languages = this.determineLanguages(race)
+
+    this.languages = languages
+    this.race = race
+  }
+
+  private determineLanguages = (race: IShadowdarkRace): string[] => {
+    const { languages, languageCount } = race
+
+    if (languages.length < languageCount) {
+      const commonLanguages = allLanguages
+        .filter(language => language.rarity === 'common')
+        .map(language => language.name)
+      const unknownCommonLanguages = commonLanguages.filter(
+        language => !languages.includes(language),
+      )
+      const newLanguage =
+        unknownCommonLanguages[Dice.roll(unknownCommonLanguages.length - 1)]
+
+      return [...languages, newLanguage]
+    }
+
+    return languages
+  }
+
   private rollAbilityScores = (): number[] => {
+    const rerollThreshold = 14
+
     const scores = Array(6)
       .fill(undefined)
       .map(() => Dice.roll(6, 3))
 
-    if (!scores.some(score => score >= 14)) {
+    if (!scores.some(score => score >= rerollThreshold)) {
       return this.rollAbilityScores()
     }
 
     return scores
   }
-  
 }
 
 export default ShadowdarkCharacter
