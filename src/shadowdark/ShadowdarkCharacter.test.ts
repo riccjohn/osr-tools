@@ -1,5 +1,5 @@
 import ShadowdarkCharacter from './ShadowdarkCharacter'
-import { Dice } from '@/dice'
+import { names } from './data'
 
 describe('ShadowdarkCharacter', () => {
   describe('initialization', () => {
@@ -147,7 +147,17 @@ describe('ShadowdarkCharacter', () => {
               expect(humanCharacters.every( character => character.languages.length === 2)).toBeTruthy()
             })
           })
+
+          test('assigns a name based on the race', () => {
+            const character = new ShadowdarkCharacter()
+            character.generate()
+
+            const characterRace = character.race.name.toLowerCase()
+            const allNames: Record<string, string[]> = names
+
+            expect(allNames[characterRace].includes(character.name)).toBeTruthy()
         })
+          })
       })
     })
   })
