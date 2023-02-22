@@ -1,6 +1,6 @@
 import { Dice } from '@/dice'
 import { expandObjectKeys } from '@/helpers'
-import { abilityModifiers, languages as allLanguages, races } from './data'
+import { abilityModifiers, languages as allLanguages, races, names } from './data'
 class ShadowdarkCharacter {
   private abilities: IShadowdarkAbilities = {
     strength: { score: 10, modifier: 0 },
@@ -13,10 +13,10 @@ class ShadowdarkCharacter {
 
   public race: IShadowdarkRace = {} as IShadowdarkRace
   public languages: string[] = []
-  constructor() {}
+  public name: string = ''
 
   public generate = () => {
-    this.abilities = this.generateAbilityScores()
+    this.generateAbilityScores()
     this.generateRace()
   }
 
@@ -48,7 +48,7 @@ class ShadowdarkCharacter {
     return this.abilities.wisdom
   }
 
-  private generateAbilityScores = (): IShadowdarkAbilities => {
+  private generateAbilityScores = (): void => {
     const abilityScoreRolls = this.rollAbilityScores()
 
     const abilityModifiersMap = expandObjectKeys(abilityModifiers)
@@ -65,7 +65,7 @@ class ShadowdarkCharacter {
     const [strength, dexterity, constitution, intelligence, wisdom, charisma] =
       abilitiesWithModifiers
 
-    return {
+    this.abilities = {
       strength,
       dexterity,
       constitution,
@@ -83,6 +83,15 @@ class ShadowdarkCharacter {
 
     this.languages = languages
     this.race = race
+    this.name = this.rollName(race)
+  }
+
+  private rollName = (race: IShadowdarkRace): string => {
+    const raceName = (race.name as string).toLowerCase()
+    const namesByRace: Record<string, string[]> = names
+    const namesForRace = namesByRace[raceName]
+
+    return namesForRace[Dice.roll(namesForRace.length - 1)]
   }
 
   private determineLanguages = (race: IShadowdarkRace): string[] => {
