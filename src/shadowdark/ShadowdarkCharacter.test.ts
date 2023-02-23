@@ -99,33 +99,63 @@ describe('ShadowdarkCharacter', () => {
             expect(character.race).toBeTruthy()
           })
 
-          test('assigns languages based on the race', () => {
-            const characters = rollMultipleCharacters()
-
-            const dwarfCharacters = characters.filter(
-              character => character.race.name === 'Dwarf',
-            )
-
-            expect(
-              dwarfCharacters.every(
-                character =>
-                  character.languages.includes('Dwarvish') &&
-                  character.languages.includes('Common'),
-              ),
-            ).toBeTruthy()
+          describe("when the character has a race of 'Dwarf'", () => {
+            test('has languages common and dwarvish', () => {
+              const character = new ShadowdarkCharacter({ race: 'Dwarf' })
+              character.generate()
+  
+              expect(character.languages).toContain('common')
+              expect(character.languages).toContain('dwarvish')
+            })
           })
 
-          describe('when the character is human', () => {
+          describe("when the character has a race of 'Human'", () => {
             test('assigns a second language randomly', () => {
-              const characters = rollMultipleCharacters()
+              const character = new ShadowdarkCharacter({ race: 'Human' })
+              character.generate()
 
-              const humanCharacters = characters.filter(
-                character => character.race.name === 'Human',
-              )
+              expect(character.languages).toContain('common')
+              expect(character.languages.length).toBeGreaterThanOrEqual(2)
+            })
+          })
 
-              humanCharacters.forEach(character => {
-                expect(character.languages.length).toBeGreaterThanOrEqual(2)
-              })
+          describe("when the character has a race of 'Goblin'", () => {
+            test('has languages common and goblin', () => {
+              const character = new ShadowdarkCharacter({ race: 'Goblin' })
+              character.generate()
+  
+              expect(character.languages).toContain('common')
+              expect(character.languages).toContain('goblin')
+            })
+          })
+
+          describe("when the character has a race of 'Elf'", () => {
+            test('has languages common, elvish, and sylvan', () => {
+              const character = new ShadowdarkCharacter({ race: 'Elf' })
+              character.generate()
+  
+              expect(character.languages).toContain('common')
+              expect(character.languages).toContain('elvish')
+              expect(character.languages).toContain('sylvan')
+            })
+          })
+
+          describe("when the character has a race of 'Halfling'", () => {
+            test('has the commmon language', () => {
+              const character = new ShadowdarkCharacter({ race: 'Halfling' })
+              character.generate()
+  
+              expect(character.languages).toContain('common')
+            })
+          })
+
+          describe("when the character has a race of 'Half-Orc'", () => {
+            test('has languages common and orcish', () => {
+              const character = new ShadowdarkCharacter({ race: 'Half-Orc' })
+              character.generate()
+  
+              expect(character.languages).toContain('common')
+              expect(character.languages).toContain('orcish')
             })
           })
 

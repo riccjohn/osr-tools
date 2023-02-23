@@ -32,9 +32,14 @@ class ShadowdarkCharacter {
   public title: string = ''
   public spells: string[] = []
 
+/**
+ * Represents a Shadowdark character.
+ * @constructor
+ * @arg {ICharacterOptions} options - Optional charcter options to be used when generating a new PC
+ */
   constructor (options: ICharacterOptions | undefined = undefined) {
     if (options) {
-      const { race: raceOption} = options
+      const { race: raceOption } = options
 
       if (raceOption) {
         const chosenRace = (races as IShadowdarkRace[]).find(race => race.name === raceOption)
@@ -46,7 +51,7 @@ class ShadowdarkCharacter {
   public generate = () => {
     this.generateAbilityScores()
     this.level = 1
-    this.generateAlignment()
+    this.rollAlignment()
 
     this.generateRace()
     this.rollClass()
@@ -163,7 +168,7 @@ class ShadowdarkCharacter {
     return scores
   }
 
-  private generateAlignment = (): void => {
+  private rollAlignment = (): void => {
     const alignmentChances = {
       '1, 2, 3': 'lawful',
       '4, 5': 'neutral',
