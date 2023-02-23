@@ -161,7 +161,9 @@ describe('ShadowdarkCharacter', () => {
           test('rolls hit die for maxHp', () => {
             const characters = rollMultipleCharacters()
 
-            expect(characters.every(character => character.maxHp >= 1)).toBeTruthy()
+            expect(
+              characters.every(character => character.maxHp >= 1),
+            ).toBeTruthy()
           })
 
           test('adds a title', () => {
@@ -174,6 +176,16 @@ describe('ShadowdarkCharacter', () => {
         })
       })
     })
+
+    describe('when given options as arguments', () => {
+      describe("given a race of 'human'", () => {
+        test('sets the race to human', () => {
+          const character = new ShadowdarkCharacter({ race: 'Human' })
+
+          expect(character.race.name).toBe('Human')
+        })
+      })
+    })
   })
 })
 
@@ -181,11 +193,11 @@ const rollMultipleCharacters = () => {
   const numberOfCharactersToRoll = 75
 
   return Array(numberOfCharactersToRoll)
-  .fill(undefined)
-  .map(() => {
-    const character = new ShadowdarkCharacter()
-    character.generate()
+    .fill(undefined)
+    .map(() => {
+      const character = new ShadowdarkCharacter()
+      character.generate()
 
-    return character
-  })
+      return character
+    })
 }

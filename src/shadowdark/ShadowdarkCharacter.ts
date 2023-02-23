@@ -8,6 +8,10 @@ import {
   races,
   titlesByClass,
 } from './data'
+
+interface ICharacterOptions {
+  race: ShadowdarkRaceName
+}
 class ShadowdarkCharacter {
   private abilities: IShadowdarkAbilities = {
     strength: { score: 10, modifier: 0 },
@@ -28,11 +32,23 @@ class ShadowdarkCharacter {
   public title: string = ''
   public spells: string[] = []
 
+  constructor (options: ICharacterOptions | undefined = undefined) {
+    if (options) {
+      const { race: raceOption} = options
+
+      if (raceOption) {
+        const chosenRace = (races as IShadowdarkRace[]).find(race => race.name === raceOption)
+        this.race = chosenRace ? chosenRace : {} as IShadowdarkRace
+      }
+    }
+  }
+
   public generate = () => {
     this.generateAbilityScores()
-    this.generateRace()
     this.level = 1
     this.generateAlignment()
+
+    this.generateRace()
     this.rollClass()
   }
 
@@ -92,12 +108,17 @@ class ShadowdarkCharacter {
   }
 
   private generateRace = (): void => {
-    const dieRoll = Dice.roll(races.length - 1)
-    const race = (races as IShadowdarkRace[])[dieRoll]
-    const languages = this.determineLanguages(race)
+    let race: IShadowdarkRace
 
-    this.languages = languages
+    if (!this.race.name) {
+      const dieRoll = Dice.roll(races.length - 1)
+      race = (races as IShadowdarkRace[])[dieRoll]
+    } else {
+      race = this.race
+    }
+
     this.race = race
+    this.languages = this.determineLanguages(race) 
     this.name = this.rollName(race)
   }
 
