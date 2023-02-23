@@ -1,0 +1,104 @@
+[
+  {
+    "name": "cleric",
+    "allowedWeapons": [
+      "club",
+      "crossbow",
+      "dagger",
+      "mace",
+      "longsword",
+      "staff",
+      "warhammer"
+    ],
+    "allowedArmor": "*",
+    "shieldsAllowed": true,
+    "hitDie": 6,
+    "languages": [""],
+    "dietyRequired": true,
+    "spellcastingAllowed": true,
+    "spellsKnownByTier": [
+      {
+        "level": 1,
+        "tier-1": 2
+      },
+      {
+        "level": 2,
+        "tier-1": 3
+      },
+      {
+        "level": 3,
+        "tier-1": 3,
+        "tier-2": 1
+      },
+      {
+        "level": 4,
+        "tier-1": 3,
+        "tier-2": 2
+      },
+      {
+        "level": 5,
+        "tier-1": 3,
+        "tier-2": 2,
+        "tier-3": 1
+      },
+      {
+        "level": 6,
+        "tier-1": 3,
+        "tier-2": 2,
+        "tier-3": 2
+      },
+      {
+        "level": 7,
+        "tier-1": 3,
+        "tier-2": 3,
+        "tier-3": 2,
+        "tier-4": 1
+      },
+      {
+        "level": 8,
+        "tier-1": 3,
+        "tier-2": 3,
+        "tier-3": 2,
+        "tier-4": 2
+      },
+      {
+        "level": 9,
+        "tier-1": 3,
+        "tier-2": 3,
+        "tier-3": 2,
+        "tier-4": 2,
+        "tier-5": 1
+      },
+      {
+        "level": 10,
+        "tier-1": 3,
+        "tier-2": 3,
+        "tier-3": 3,
+        "tier-4": 2,
+        "tier-5": 2
+      }
+    ],
+    "spellList": "cleric"
+  },
+  {
+    "name": "fighter",
+    "allowedWeapons": "*",
+    "allowedArmor": "*",
+    "shieldsAllowed": true,
+    "hitDie": 8
+  },
+  {
+    "name": "thief",
+    "allowedWeapons": ["club", "crossbow", "dagger", "shortbow", "shortsword"],
+    "allowedArmor": ["leather", "mithral", "chainmail"],
+    "shieldsAllowed": false,
+    "hitDie": 4
+  },
+  {
+    "name": "wizard",
+    "allowedWeapons": ["dagger", "staff"],
+    "allowedArmor": [],
+    "shieldsAllowed": false,
+    "hitDie": 4
+  }
+]

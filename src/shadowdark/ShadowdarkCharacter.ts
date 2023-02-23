@@ -1,6 +1,13 @@
-import { Dice } from '@/dice'
+import { Dice, Randomization } from '@/dice'
 import { expandObjectKeys } from '@/helpers'
-import { abilityModifiers, languages as allLanguages, races, names } from './data'
+import {
+  abilityModifiers,
+  characterClasses,
+  languages as allLanguages,
+  names,
+  races,
+  titlesByClass,
+} from './data'
 class ShadowdarkCharacter {
   private abilities: IShadowdarkAbilities = {
     strength: { score: 10, modifier: 0 },
@@ -14,10 +21,19 @@ class ShadowdarkCharacter {
   public race: IShadowdarkRace = {} as IShadowdarkRace
   public languages: string[] = []
   public name: string = ''
+  public level: number = 1
+  public characterClass: string = ''
+  public maxHp: number = 0
+  public alignment: ShadowdarkAlignment = 'neutral'
+  public title: string = ''
+  public spells: string[] = []
 
   public generate = () => {
     this.generateAbilityScores()
     this.generateRace()
+    this.level = 1
+    this.generateAlignment()
+    this.rollClass()
   }
 
   public get abilityScores() {
@@ -76,9 +92,8 @@ class ShadowdarkCharacter {
   }
 
   private generateRace = (): void => {
-    const dieRoll = Dice.roll(races.length - 1, 1)
-    const listOfRaces = races as IShadowdarkRace[]
-    const race = listOfRaces[dieRoll]
+    const dieRoll = Dice.roll(races.length - 1)
+    const race = (races as IShadowdarkRace[])[dieRoll]
     const languages = this.determineLanguages(race)
 
     this.languages = languages
@@ -125,6 +140,55 @@ class ShadowdarkCharacter {
     }
 
     return scores
+  }
+
+  private generateAlignment = (): void => {
+    const alignmentChances = {
+      '1, 2, 3': 'lawful',
+      '4, 5': 'neutral',
+      '6': 'chaotic',
+    }
+
+    const expandedAlignmentChances = expandObjectKeys(alignmentChances)
+    const dieRoll = Dice.roll(6)
+    const alignment = expandedAlignmentChances[dieRoll]
+
+    this.alignment = alignment
+  }
+
+  private rollClass = (): void => {
+    const classes: ShadowdarkClassName[] = [
+      'cleric',
+      'fighter',
+      'thief',
+      'wizard',
+    ]
+
+    const chosenClass = Randomization.getRandomItem(
+      classes as string[],
+    ) as ShadowdarkClassName
+
+    this.addBasicClassFeatures(chosenClass)
+  }
+
+  private addTitle = () => {
+    const titles = titlesByClass as IShadowdarkTitlesByClass
+    const classTitles = titles[this.characterClass as ShadowdarkClassName]
+    const titlesForClassAndLevel = classTitles.find(title =>
+      title.levels.includes(this.level),
+    )! as IShadowdarkTitlesByLevel
+    const title = titlesForClassAndLevel[this.alignment]
+
+    this.title = title
+  }
+
+  private addBasicClassFeatures = (characterClass: ShadowdarkClassName): void => {
+    this.characterClass = characterClass
+    this.addTitle()
+    const classData = (characterClasses as IShadowdarkClassData[]).find(
+      classData => classData.name === this.characterClass,
+    )!
+    this.maxHp = Dice.roll(classData.hitDie)
   }
 }
 

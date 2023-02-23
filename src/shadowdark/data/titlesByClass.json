@@ -1,0 +1,130 @@
+{
+  "cleric": [
+    {
+      "levels": [1, 2],
+      "lawful": "acolyte",
+      "chaotic": "initiate",
+      "neutral": "seeker"
+    },
+    {
+      "levels": [3, 4],
+      "lawful": "crusader",
+      "chaotic": "zealot",
+      "neutral": "invoker"
+    },
+    {
+      "levels": [5, 6],
+      "lawful": "templar",
+      "chaotic": "cultist",
+      "neutral": "haruspex"
+    },
+    {
+      "levels": [7, 8],
+      "lawful": "champion",
+      "chaotic": "scourge",
+      "neutral": "mystic"
+    },
+    {
+      "levels": [9, 10],
+      "lawful": "paladin",
+      "chaotic": "chaos knight",
+      "neutral": "oracle"
+    }
+  ],
+  "fighter": [
+    {
+      "levels": [1, 2],
+      "lawful": "squire",
+      "chaotic": "knave",
+      "neutral": "warrior"
+    },
+    {
+      "levels": [3, 4],
+      "lawful": "cavalier",
+      "chaotic": "bandit",
+      "neutral": "barbarian"
+    },
+    {
+      "levels": [5, 6],
+      "lawful": "knight",
+      "chaotic": "slayer",
+      "neutral": "battlerager"
+    },
+    {
+      "levels": [7, 8],
+      "lawful": "thane",
+      "chaotic": "reaver",
+      "neutral": "warchief"
+    },
+    {
+      "levels": [9, 10],
+      "lawful": "lord/lady",
+      "chaotic": "warlord",
+      "neutral": "chieftain"
+    }
+  ],
+  "thief": [
+    {
+      "levels": [1, 2],
+      "lawful": "footpad",
+      "chaotic": "thug",
+      "neutral": "robber"
+    },
+    {
+      "levels": [3, 4],
+      "lawful": "burglar",
+      "chaotic": "cutthroat",
+      "neutral": "outlaw"
+    },
+    {
+      "levels": [5, 6],
+      "lawful": "rook",
+      "chaotic": "shadow",
+      "neutral": "rogue"
+    },
+    {
+      "levels": [7, 8],
+      "lawful": "underboss",
+      "chaotic": "assassin",
+      "neutral": "renegade"
+    },
+    {
+      "levels": [9, 10],
+      "lawful": "boss",
+      "chaotic": "wraith",
+      "neutral": "bandit king/queen"
+    }
+  ],
+  "wizard": [
+    {
+      "levels": [1, 2],
+      "lawful": "apprentice",
+      "chaotic": "adept",
+      "neutral": "shaman"
+    },
+    {
+      "levels": [3, 4],
+      "lawful": "conjurer",
+      "chaotic": "channeler",
+      "neutral": "seer"
+    },
+    {
+      "levels": [5, 6],
+      "lawful": "arcanist",
+      "chaotic": "witch/warlock",
+      "neutral": "warden"
+    },
+    {
+      "levels": [7, 8],
+      "lawful": "mage",
+      "chaotic": "diabolist",
+      "neutral": "sage"
+    },
+    {
+      "levels": [9, 10],
+      "lawful": "archmage",
+      "chaotic": "sorcerer",
+      "neutral": "druid"
+    }
+  ]
+}

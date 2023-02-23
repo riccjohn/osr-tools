@@ -31,14 +31,7 @@ describe('ShadowdarkCharacter', () => {
           })
 
           test('ability scores include at least one number 14 or above', () => {
-            const characters = Array(75)
-              .fill(undefined)
-              .map(() => {
-                const character = new ShadowdarkCharacter()
-                character.generate()
-
-                return character
-              })
+            const characters = rollMultipleCharacters()
 
             const characterHasValidAbilityScores: boolean[] = characters.map(
               character => {
@@ -107,14 +100,7 @@ describe('ShadowdarkCharacter', () => {
           })
 
           test('assigns languages based on the race', () => {
-            const characters = Array(75)
-              .fill(undefined)
-              .map(() => {
-                const character = new ShadowdarkCharacter()
-                character.generate()
-
-                return character
-              })
+            const characters = rollMultipleCharacters()
 
             const dwarfCharacters = characters.filter(
               character => character.race.name === 'Dwarf',
@@ -130,21 +116,16 @@ describe('ShadowdarkCharacter', () => {
           })
 
           describe('when the character is human', () => {
-            test('assigns a second language randmoly', () => {
-              const characters = Array(75)
-                .fill(undefined)
-                .map(() => {
-                  const character = new ShadowdarkCharacter()
-                  character.generate()
-
-                  return character
-                })
+            test('assigns a second language randomly', () => {
+              const characters = rollMultipleCharacters()
 
               const humanCharacters = characters.filter(
                 character => character.race.name === 'Human',
               )
 
-              expect(humanCharacters.every( character => character.languages.length === 2)).toBeTruthy()
+              humanCharacters.forEach(character => {
+                expect(character.languages.length).toBeGreaterThanOrEqual(2)
+              })
             })
           })
 
@@ -155,10 +136,56 @@ describe('ShadowdarkCharacter', () => {
             const characterRace = character.race.name.toLowerCase()
             const allNames: Record<string, string[]> = names
 
-            expect(allNames[characterRace].includes(character.name)).toBeTruthy()
-        })
+            expect(
+              allNames[characterRace].includes(character.name),
+            ).toBeTruthy()
           })
+        })
+
+        test('adds an alignment', () => {
+          const character = new ShadowdarkCharacter()
+          character.generate()
+
+          const possibleAlignments = ['lawful', 'chaotic', 'neutral']
+          expect(possibleAlignments.includes(character.alignment)).toBeTruthy()
+        })
+
+        describe('class', () => {
+          test('assigns a character class', () => {
+            const character = new ShadowdarkCharacter()
+            character.generate()
+
+            expect(character.characterClass).toBeTruthy()
+          })
+
+          test('rolls hit die for maxHp', () => {
+            const characters = rollMultipleCharacters()
+
+            expect(characters.every(character => character.maxHp >= 1)).toBeTruthy()
+          })
+
+          test('adds a title', () => {
+            const characters = rollMultipleCharacters()
+
+            characters.forEach(character => {
+              expect(character.title).toBeTruthy()
+            })
+          })
+        })
       })
     })
   })
 })
+
+const rollMultipleCharacters = () => {
+  const numberOfCharactersToRoll = 75
+
+  return Array(numberOfCharactersToRoll)
+  .fill(undefined)
+  .map(() => {
+    const character = new ShadowdarkCharacter()
+    character.generate()
+
+    return character
+  })
+}
