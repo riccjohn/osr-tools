@@ -1623,10 +1623,10 @@
   dependencies:
     glob "7.1.7"
 
-"@next/font@13.1.6":
-  version "13.1.6"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.1.6.tgz#2bf99e3321ec9b4d65781c0d0ebff072e8752e1a"
-  integrity sha512-AITjmeb1RgX1HKMCiA39ztx2mxeAyxl4ljv2UoSBUGAbFFMg8MO7YAvjHCgFhD39hL7YTbFjol04e/BPBH5RzQ==
+"@next/font@13.4.1":
+  version "13.4.1"
+  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.4.1.tgz#bbb279d017efc631e804b7a4fc66eb77e86b9b8e"
+  integrity sha512-GIgdVNXhWgGq92NUSGVd4n2yiF1k0i6U3dt/Pa9SFJvOEJyAJ99khXVq6cYJYJS8jhbL0yjE8+th8h+KjIGzuA==
 
 "@next/swc-android-arm-eabi@13.1.6":
   version "13.1.6"
